@@ -1,0 +1,37 @@
+.header {
+    width: 100%;
+    background: #000;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+}
+.header ul {
+    padding: 0;
+    margin: 0 auto;
+    height: 80px;
+    width: 1080px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.header ul li {
+    list-style: none;
+    height: 100%;
+    line-height: 80px;
+    padding: 0 30px;
+    cursor: pointer;
+}
+
+.header ul li:hover {
+    background: #ccc;
+}
+.header .right-box {
+    margin: 0 30px;
+}
+.header .nickname {
+    margin-left: 8px;
+}
+  
