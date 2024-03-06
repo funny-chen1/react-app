@@ -20,6 +20,10 @@ export const login = (params) => {
     return axios.post('/login/cellphone', params)
 }
 
+export const logout = () => {
+    return axios.get('/logout')
+}
+
 export const checkLogin = (params) => {
     return axios.post('/login/status?=timestamp=' + Date.now(), params);
 }
@@ -59,3 +63,8 @@ export const getTopPlaylist = (params) => {
 export const getComment = (params) => {
     return axios.get(`/comment/playlist?id=${params.id}`)
 }
+
+export const getMv = (params) => {
+    return axios.get(`/personalized`)
+}
+

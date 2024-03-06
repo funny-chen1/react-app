@@ -1,23 +1,49 @@
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
 import routes from "../../router/index";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { AudioOutlined } from "@ant-design/icons";
-import { Button, Modal, Input, Avatar } from "antd";
+import { Button, Modal, Input, Avatar, Dropdown } from "antd";
 import Login from "../../views/LoginView";
-import { search } from "../../utils/service";
-import { useSelector } from "react-redux";
+import {setLocal} from "../../utils/public";
+import { logout } from "../../utils/service";
+import { setUser } from "../../store/actions";
 
 const { Search } = Input;
 
 function Header() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState("");
   const userInfo = useSelector((state) => state.user);
   const routeData = routes.filter(item => {
     return item.isActive;
-  })
+  });
+  const items = [
+      {
+          key: '1',
+          label: (
+              <a target="_blank" onClick={() => goPath('/user')}>
+                  个人中心
+              </a>
+          ),
+      },
+      {
+          key: '2',
+          label: (
+              <a target="_blank" onClick={loginout}>
+                  退出登录
+              </a>
+          ),
+      }
+  ];
+
+
+  useEffect( () => {
+      // init();
+  }, []);
 
   function goPath(url, params = {}) {
     if (url.path) {
@@ -25,6 +51,12 @@ function Header() {
     } else {
       navigate(url, { state: params });
     }
+  }
+
+  async function loginout() {
+      setLocal('cookie', '');
+      await logout();
+      dispatch(setUser({}));
   }
 
   const showModal = (type = "phone") => {
@@ -68,13 +100,15 @@ function Header() {
         style={{ width: 200 }}
       />
       <div className="right-box">
-        {userInfo.data && (
-          <>
-            <Avatar size={40} src={userInfo.data.profile.avatarUrl}></Avatar>
-            <span className="nickname">{userInfo.data.profile.nickname}</span>
-          </>
+        {userInfo.data !== null && (
+            <>
+                <Dropdown menu={{items}}>
+                    <Avatar size={40} src={userInfo.data.profile.avatarUrl}></Avatar>
+                    {/*<span className="nickname">{userInfo.data.profile.nickname}</span>*/}
+                </Dropdown>
+            </>
         )}
-        {!userInfo.data && (
+        {userInfo.data === null && (
           <>
             <Button
               type="primary"

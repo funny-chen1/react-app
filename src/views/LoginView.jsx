@@ -6,6 +6,7 @@ import { login, checkLogin } from "../utils/service";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "../utils/axios";
+import { setLocal } from "../utils/public";
 import { setUser } from "../store/actions";
 
 function Login({ type, close }) {
@@ -52,16 +53,15 @@ function Login({ type, close }) {
       .then((res) => {
         if (res.code === 803) {
           console.log(res.cookie);
-          Cookies.set('cookie', res.cookie);
+          // Cookies.set('cookie', res.cookie);
+          setLocal('cookie', res.cookie);
           clearInterval(timer);
           axios
             .post("/login/status?=timestamp=" + Date.now(), {
               cookie: res.cookie,
             })
             .then((result) => {
-              console.log(result);
               dispatch(setUser(result.data));
-              console.log("---------------");
               close();
             });
         }

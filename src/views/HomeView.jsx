@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Carousel, Spin } from "antd";
-import { getBanner, getPlaylist, getArtists } from "../utils/service";
+import { getBanner, getPlaylist, getArtists, getMv } from "../utils/service";
 import Playlist from "../components/Playlist/Playlist";
 import "./style.css";
 
@@ -8,16 +8,18 @@ function Home() {
   const [banner, setBanner] = useState([]);
   const [playlist, setPlaylist] = useState([]);
   const [artistslist, setArtistslist] = useState([]);
+  const [mvlist, setMvlist] = useState([]);
   const [loading, setLoding] = useState(false);
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
     const init = async () => {
       setLoding(true);
-      const [res1, res2, res3] = await Promise.all([getBanner(), getPlaylist(), getArtists()]);
+      const [res1, res2, res3, res4] = await Promise.all([getBanner(), getPlaylist(), getArtists(), getMv()]);
       setBanner(res1.banners);
       setPlaylist(res2.result);
       setArtistslist(res3.artists);
+      setMvlist(res4.result);
       setLoding(false);
     };
     init();
@@ -39,6 +41,7 @@ function Home() {
         </Carousel>
         <Playlist title={'推荐歌单'} object={playlist} type={'playlist'}></Playlist>
         <Playlist title={'热门歌手'} object={artistslist} type={'singerlist'}></Playlist>
+        <Playlist title={'推荐MV'} object={mvlist} type={'mvlist'}></Playlist>
       </Spin>
     </div>
   );
