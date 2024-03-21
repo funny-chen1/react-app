@@ -29,7 +29,7 @@ export const checkLogin = (params) => {
 }
 
 export const playlistInfo = (params) => {
-    return axios.get(`/playlist/detail?id=${params.id}`)
+    return axios.get(`/playlist/detail?id=${params.id}&timestamp=${Date.now()}`)
 }
 
 export const playlistDetail = (params) => {
@@ -45,7 +45,7 @@ export const artistDetail = (params) => {
 }
 
 export const getArtistsSongs = (params) => {
-    return axios.get(`/artists?id=${params.id}`)
+    return axios.get(`/artists?id=${params.id}&timestamp=${Date.now()}`)
 }
 
 export const getArtistCategory = (params) => {
@@ -68,3 +68,18 @@ export const getMv = (params) => {
     return axios.get(`/personalized`)
 }
 
+export const collectPlaylist = (params) => {
+    return axios.post('/playlist/subscribe', params)
+}
+
+export const collectArtist = (params) => {
+    return axios.post('/artist/sub', params)
+}
+
+export const getUserPlaylist = (params) => {
+    return axios.get(`user/playlist?uid=${params.uid}`)
+}
+
+export const getUserArtist = (params) => {
+    return axios.get('/artist/sublist');
+}

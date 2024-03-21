@@ -15,9 +15,9 @@
   min-width: 1280px;
 }
 
-body {
+body, html {
   background: #ededed;
-  /*height: 100vh;*/
+  margin: 0;
 }
 
 ul li {
@@ -28,6 +28,7 @@ ul li {
 
 .container {
   width: 1280px;
+  background: #ededed;
   margin: 30px auto;
   display: flex;
   justify-content: center;
@@ -42,9 +43,6 @@ a:hover {
   color: #fff;
 }
 
-body {
-  margin: 0;
-}
 
 h1 {
   font-size: 3.2em;
@@ -130,4 +128,8 @@ button:focus-visible {
 
 P {
   white-space: pre-line;
+}
+
+.mt20 {
+  margin-top: 20px;
 }

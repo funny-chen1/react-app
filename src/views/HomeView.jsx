@@ -3,6 +3,7 @@ import { Carousel, Spin } from "antd";
 import { getBanner, getPlaylist, getArtists, getMv } from "../utils/service";
 import Playlist from "../components/Playlist/Playlist";
 import "./style.css";
+import axios from "axios";
 
 function Home() {
   const [banner, setBanner] = useState([]);

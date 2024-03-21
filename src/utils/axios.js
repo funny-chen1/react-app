@@ -8,10 +8,10 @@ axios.defaults.withCredentials = true;
 
 axios.interceptors.request.use((config) => {
   config.headers["Content-Type"] = "application/json";
-  const token = localStorage.getItem('token');
-  if (token) {
-    config.headers.Authorization = `token ${token}`
-  }
+  // const cookie = localStorage.getItem('cookie');
+  // if (cookie) {
+  //   config.headers.Authorization = `token ${cookie}`
+  // }
   return config;
 });
 

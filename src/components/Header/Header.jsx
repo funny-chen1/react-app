@@ -17,7 +17,7 @@ function Header() {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState("");
-  const userInfo = useSelector((state) => state.user);
+  const userInfo = useSelector((state) => state.data.userInfo);
   const routeData = routes.filter(item => {
     return item.isActive;
   });
@@ -42,6 +42,7 @@ function Header() {
 
 
   useEffect( () => {
+    console.log(userInfo);
       // init();
   }, []);
 
@@ -100,15 +101,15 @@ function Header() {
         style={{ width: 200 }}
       />
       <div className="right-box">
-        {userInfo.data !== null && (
+        {userInfo !== '' && (
             <>
                 <Dropdown menu={{items}}>
-                    <Avatar size={40} src={userInfo.data.profile.avatarUrl}></Avatar>
+                    <Avatar size={40} src={userInfo.profile.avatarUrl}></Avatar>
                     {/*<span className="nickname">{userInfo.data.profile.nickname}</span>*/}
                 </Dropdown>
             </>
         )}
-        {userInfo.data === null && (
+        {userInfo === '' && (
           <>
             <Button
               type="primary"
