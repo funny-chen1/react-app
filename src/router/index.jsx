@@ -36,6 +36,13 @@ const routes = [
         element: lazy(() => import('../views/SingerView'))
     },
     {
+        path: '/mv/:id',
+        name: 'mv详情',
+        isActive: false,
+        isAuth: false,
+        element: lazy(() => import('../views/MvView'))
+    },
+    {
         path: '/about',
         name: '关于我们',
         isActive: true,

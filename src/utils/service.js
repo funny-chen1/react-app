@@ -65,7 +65,7 @@ export const getComment = (params) => {
 }
 
 export const getMv = (params) => {
-    return axios.get(`/personalized`)
+    return axios.get(`/mv/all`)
 }
 
 export const collectPlaylist = (params) => {
@@ -82,4 +82,16 @@ export const getUserPlaylist = (params) => {
 
 export const getUserArtist = (params) => {
     return axios.get('/artist/sublist');
+}
+
+export const getMvDetail = (params) => {
+    return axios.get(`/mv/detail?mvid=${params.id}`)
+}
+
+export const getMvUrl = (params) => {
+    return axios.get(`/mv/url?id=${params.id}`)
+}
+
+export const getMvComment = (params) => {
+    return axios.get(`/comment/mv?id=${params.id}`)
 }

@@ -20,7 +20,7 @@ function Home() {
       setBanner(res1.banners);
       setPlaylist(res2.result);
       setArtistslist(res3.artists);
-      setMvlist(res4.result);
+      setMvlist(res4.data);
       setLoding(false);
     };
     init();
@@ -42,7 +42,7 @@ function Home() {
         </Carousel>
         <Playlist title={'推荐歌单'} object={playlist} type={'playlist'}></Playlist>
         <Playlist title={'热门歌手'} object={artistslist} type={'singerlist'}></Playlist>
-        <Playlist title={'推荐MV'} object={mvlist} type={'mvlist'}></Playlist>
+        <Playlist title={'推荐MV'} object={mvlist} type={'mv'}></Playlist>
       </Spin>
     </div>
   );

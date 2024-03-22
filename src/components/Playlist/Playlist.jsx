@@ -15,7 +15,7 @@ function Playlist({title, object, type}) {
             <ul>
                 {object.map(item =>
                     <li key={item.id} onClick={() => {goPath(item)}}>
-                        <img src={item.picUrl || item.coverImgUrl} alt="" />
+                        <img src={item.picUrl || item.coverImgUrl || item.cover} alt="" />
                         <span style={{fontSize: 18}}>{item.name}</span>
                     </li>
                 )}
