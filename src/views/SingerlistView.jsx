@@ -5,16 +5,20 @@ import {
   artistDetail,
   getArtistsSongs,
   collectArtist,
+  getUrl
 } from "../utils/service";
 import AppTable from "../components/app-table/AppTable";
 import { isEmpty } from "../utils/public";
 import { CaretRightOutlined, PlusOutlined } from "@ant-design/icons";
 import { Spin, Card, Row, Col, Empty, Space, Button, Tabs } from "antd";
+import { playMusic } from "../store/actions";
+import { useDispatch } from "react-redux";
 const { Meta } = Card;
 
 function SingerList(params) {
   const { id } = useParams();
   const location = useLocation();
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     briefDesc: "",
     introduction: [],
@@ -23,8 +27,10 @@ function SingerList(params) {
     isLoadingT: false,
   });
 
-  const play = (record) => {
+  const play = async (record) => {
     console.log(record);
+    const res = await getUrl({id: record.id})
+    dispatch(playMusic(res.data[0].url))
   };
 
   const columns = [

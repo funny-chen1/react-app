@@ -95,3 +95,8 @@ export const getMvUrl = (params) => {
 export const getMvComment = (params) => {
     return axios.get(`/comment/mv?id=${params.id}`)
 }
+
+export const getUrl = (params) => {
+    // return axios.get(`/song/url?id=${params.id}`)
+    return axios.get(`/song/url/v1?id=${params.id}&level=exhigh`)
+}

@@ -5,6 +5,7 @@ import {
   playlistInfo,
   getComment,
   collectPlaylist,
+  getUrl
 } from "../utils/service";
 import AppTable from "../components/app-table/AppTable";
 import CommentList from "../components/CommentList/CommentList";
@@ -20,6 +21,8 @@ import {
   Button,
   Avatar,
 } from "antd";
+import { playMusic } from "../store/actions";
+import { useDispatch } from "react-redux";
 const { Meta } = Card;
 
 function PlayDetail(params) {
@@ -29,8 +32,11 @@ function PlayDetail(params) {
     info: {},
     isLoading: false,
   });
-  const play = (record) => {
+  const dispatch = useDispatch()
+  const play = async (record) => {
     console.log(record);
+    const res = await getUrl({id: record.id})
+    dispatch(playMusic(res.data[0].url))
   };
 
   const columns = [

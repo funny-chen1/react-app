@@ -23,7 +23,7 @@ function Mv() {
       ...pre,
       info: res.data,
       url: url.data.url,
-      hotComments: comment.hotComments,
+      hotComments: comment.comments,
       isLoading: false,
     }));
   };
