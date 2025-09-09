@@ -15,6 +15,7 @@ function App() {
     isLogin: false,
   });
   const dispatch = useDispatch();
+  const { currentUrl } = useSelector((state) => state.data)
 
   const init = async () => {
     var cookie = getLocal("cookie");
@@ -62,6 +63,11 @@ function App() {
           </Routes>
         </Suspense>
       </div>
+      {currentUrl && <div className="audio-box">
+        <audio controls autoPlay>
+          <source src={currentUrl} type="audio/mpeg" />
+        </audio>
+      </div>}
     </>
   );
 }

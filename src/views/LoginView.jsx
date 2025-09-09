@@ -11,7 +11,7 @@ import { setUser } from "../store/actions";
 
 function Login({ type, close }) {
   const navigate = useNavigate();
-  const userInfo = useSelector((state) => state.data);
+  const userInfo = useSelector((state) => state.data.userInfo);
   const dispatch = useDispatch();
   const [state, setState] = useState({ key: "", imgUrl: "" });
   const [isLoading, setIsLoading] = useState(false);

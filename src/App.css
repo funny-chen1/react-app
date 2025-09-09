@@ -47,3 +47,11 @@
   flex-direction: column;
 }
 
+.audio-box {
+  padding-top: 5px;
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+  background: #000;
+}
+
