@@ -1,4 +1,4 @@
-# React + Vite
+# React + Vite + JSX pc端音乐网站
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
