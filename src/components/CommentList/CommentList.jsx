@@ -10,9 +10,9 @@ function CommentList({data}) {
         <div className="comment-list">
             <h2>评论</h2>
             <ul>
-                {data && data.map((item,key) =>
-                    <>
-                        <li key={key}>
+                {data && data.map((item, key) =>
+                    <div key={key}>
+                        <li>
                             <Row>
                                 <Col span={4}>
                                     <Space
@@ -30,7 +30,7 @@ function CommentList({data}) {
                             </Row>
                         </li>
                         {key < data.length -1 && <Divider/>}
-                    </>
+                    </div>
                 )}
             </ul>
         </div>
