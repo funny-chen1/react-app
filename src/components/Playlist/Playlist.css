@@ -3,14 +3,36 @@
     flex-wrap: wrap;
     max-width: 1280px;
     margin: 0 auto;
+    cursor: pointer;
+    background: url("../../assets/webp.webp");
 }
 .playlist li {
     display: flex;
     flex-direction: column;
     width: calc((100% - 6 * 10px) / 6);
     margin: 20px;
-    border: 1px solid #ccc;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.5s linear;
+    color: #fff;
+    gap: 20px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0,85,255, 0.075);
+    box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px;
+    border: 2px rgba(255,255,255,0.4) solid;
+    border-bottom: 2px rgba(40,40,40,0.35) solid;
+    border-right: 2px rgba(40,40,40,0.35) solid;
+}
+
+.playlist li:hover {
+    transform: translateY(-10px);
+    transition: transform 0.5s linear;
 }
 .playlist li img {
     width: 100%;
+    height: auto;
+}
+
+.playlist li span {
+    margin: auto 0;
 }

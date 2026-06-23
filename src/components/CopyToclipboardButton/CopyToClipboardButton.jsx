@@ -6,6 +6,9 @@ const CopyToClipboardButton = ({text}) => {
     const [isCopied, setIsCopied] = useState(false);
 
     const handleCopyClick = async () => {
+        if (!text) {
+            return
+        }
         try {
             await copy(text);
             setIsCopied(true);
