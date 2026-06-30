@@ -1,0 +1,43 @@
+:root {
+  /* 主色 — 紫罗兰，音乐类应用常见基调 */
+  --color-primary: #7c3aed;
+  --color-primary-light: #a78bfa;
+  --color-primary-dark: #5b21b6;
+  --color-primary-muted: rgba(124, 58, 237, 0.12);
+
+  /* 点缀色 — 珊瑚粉与暖橙，打破单调 */
+  --color-accent: #f472b6;
+  --color-accent-warm: #fb923c;
+
+  /* 背景与表面 */
+  --color-bg: #f5f0ff;
+  --color-bg-warm: #faf7f5;
+  --color-surface: #ffffff;
+  --color-surface-elevated: rgba(255, 255, 255, 0.85);
+
+  /* 文字 */
+  --color-text: #1e1b2e;
+  --color-text-secondary: #6b7280;
+  --color-text-muted: #9ca3af;
+  --color-text-on-dark: rgba(255, 255, 255, 0.92);
+
+  /* 导航栏 */
+  --color-header-start: #2d1b69;
+  --color-header-end: #1a0f3c;
+  --color-header-hover: rgba(255, 255, 255, 0.12);
+
+  /* 玻璃拟态卡片 */
+  --color-glass-bg: rgba(124, 58, 237, 0.06);
+  --color-glass-border: rgba(255, 255, 255, 0.55);
+  --color-glass-shadow: rgba(45, 27, 105, 0.12);
+  --color-glass-edge: rgba(91, 33, 182, 0.18);
+
+  /* 播放器底栏 */
+  --color-player-bg: linear-gradient(135deg, #2d1b69 0%, #1a0f3c 100%);
+
+  /* 圆角与过渡 */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --transition-fast: 0.2s ease;
+}

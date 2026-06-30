@@ -31,9 +31,13 @@ function Singer() {
 
     const init = async () => {
         setIsLoading(true);
-        const res = await getArtistCategory(params);
-        setState({...state, artists: res.artists});
-        setIsLoading(false);
+        try {
+            const res = await getArtistCategory(params);
+            setState({...state, artists: res.artists});
+        } finally {
+            setIsLoading(false);
+        }
+        
     };
 
     useEffect(() => {

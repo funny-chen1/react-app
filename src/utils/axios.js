@@ -1,4 +1,5 @@
 import axios from "axios";
+import { message } from "antd";
 
 axios.defaults.baseURL = "https://musci-api-six.vercel.app/";
 // axios.defaults.baseURL = 'http://172.18.3.125:8013/'
@@ -17,14 +18,15 @@ axios.interceptors.request.use((config) => {
 
 axios.interceptors.response.use(
   (res) => {
-    const code = res.status;
-    if (code !== 200) {
-        console.log('error');
+    const data = res.data;
+    if (data?.code !== undefined && data.code !== 200) {
+      message.error(data.message || data.msg || "请求失败");
+      return Promise.reject(data);
     }
-    return res.data;
+    return data;
   },
   (error) => {
-    console.log('error');
+    message.error('error')
     return Promise.reject(error);
   }
 );

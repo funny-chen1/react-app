@@ -1,39 +1,79 @@
 .header {
-    width: 100%;
-    background: #000;
-    color: #fff;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    padding-right: 50px;
-    box-sizing: border-box;
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--color-header-start) 0%,
+    var(--color-header-end) 100%
+  );
+  color: var(--color-text-on-dark);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding-right: 50px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 16px rgba(26, 15, 60, 0.35);
 }
+
 .header ul {
-    padding: 0;
-    margin: 0 auto;
-    height: 80px;
-    width: 1080px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  padding: 0;
+  margin: 0 auto;
+  height: 80px;
+  width: 1080px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
+
 .header ul li {
-    list-style: none;
-    height: 100%;
-    line-height: 80px;
-    padding: 0 30px;
-    cursor: pointer;
+  list-style: none;
+  height: 100%;
+  line-height: 80px;
+  padding: 0 30px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  border-radius: var(--radius-sm);
 }
 
 .header ul li:hover {
-    background: #ccc;
-}
-.header .right-box {
-    margin: 0 30px;
-}
-.header .nickname {
-    margin-left: 8px;
+  background: var(--color-header-hover);
+  color: var(--color-primary-light);
 }
 
+.header .right-box {
+  margin: 0 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header .nickname {
+  margin-left: 8px;
+}
+
+.header .ant-input-search .ant-input {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.header .ant-input-search .ant-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.header .ant-input-search .ant-input:hover,
+.header .ant-input-search .ant-input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--color-primary-light);
+}
+
+.header .ant-input-search .ant-input-search-button {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.header .ant-input-search .ant-input-search-button:hover {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+}

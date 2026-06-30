@@ -1,14 +1,15 @@
 .comment-list {
+}
 
-}
 ul li {
-    margin: 20px 0;
+  margin: 20px 0;
 }
+
 p {
-    text-align: left;
-    color: #666;
+  text-align: left;
+  color: var(--color-text-secondary);
 }
 
 .ant-col {
-    text-align: left;
+  text-align: left;
 }

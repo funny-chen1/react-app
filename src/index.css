@@ -1,12 +1,11 @@
+@import "./styles/theme.css";
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: var(--color-text);
+  background-color: var(--color-bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,9 +14,16 @@
   min-width: 1280px;
 }
 
-body, html {
-  background: #ededed;
+body,
+html {
+  background: linear-gradient(
+    160deg,
+    var(--color-bg) 0%,
+    var(--color-bg-warm) 50%,
+    #ede9fe 100%
+  );
   margin: 0;
+  min-height: 100vh;
 }
 
 ul li {
@@ -28,57 +34,57 @@ ul li {
 
 .container {
   width: 1280px;
-  background: #ededed;
+  background: var(--color-surface);
   margin: 30px auto;
   display: flex;
   justify-content: center;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px var(--color-glass-shadow);
 }
 
 a {
   font-weight: 500;
   text-decoration: inherit;
   list-style: none;
-}
-a:hover {
-  color: #fff;
+  color: var(--color-primary);
+  transition: color var(--transition-fast);
 }
 
+a:hover {
+  color: var(--color-primary-light);
+}
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: var(--color-text);
+}
+
+h2 {
+  color: var(--color-primary-dark);
 }
 
 button {
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--color-primary);
+  color: #fff;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 2px;
 }
 
 .item-list {
@@ -88,6 +94,7 @@ button:focus-visible {
 .item-list ul {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .item-list li {
@@ -95,10 +102,30 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   margin: 10px;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  background: var(--color-glass-bg);
+  border: 1px solid var(--color-glass-border);
+  box-shadow: 0 2px 12px var(--color-glass-shadow);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
-.item-list img{
+
+.item-list li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px var(--color-glass-shadow);
+}
+
+.item-list img {
   width: 150px;
   height: 150px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.item-list span {
+  margin-top: 8px;
+  color: var(--color-text);
+  font-size: 14px;
 }
 
 .loading {
@@ -106,7 +133,7 @@ button:focus-visible {
 }
 
 .red {
-  color: red;
+  color: var(--color-accent);
 }
 
 .time-box {
@@ -116,19 +143,20 @@ button:focus-visible {
   z-index: 9;
   width: 220px;
   height: 160px;
-  color: skyblue;
-  border-radius: 10px;
+  color: var(--color-primary);
+  border-radius: var(--radius-lg);
   margin: 30px auto;
   font-size: 42px;
+  font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(5px);
-  background-color: rgba(255, 0, 0, 0.075);
-  box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px;
-  border: 2px rgba(255, 255, 255, 0.4) solid;
-  border-bottom: 2px rgba(40, 40, 40, 0.35) solid;
-  border-right: 2px rgba(40, 40, 40, 0.35) solid;
+  backdrop-filter: blur(12px);
+  background: var(--color-surface-elevated);
+  box-shadow: 0 4px 24px var(--color-glass-shadow);
+  border: 1px solid var(--color-glass-border);
+  border-right: 2px solid var(--color-glass-edge);
+  border-bottom: 2px solid var(--color-glass-edge);
 }
 
 .ant-tabs-content-holder {
@@ -141,4 +169,28 @@ P {
 
 .mt20 {
   margin-top: 20px;
+}
+
+.home {
+  padding-bottom: 40px;
+}
+
+.playlist h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin: 32px 0 16px;
+  position: relative;
+  display: inline-block;
+}
+
+.playlist h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: 2px;
 }

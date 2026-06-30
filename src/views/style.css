@@ -1,3 +1,14 @@
 .home img {
-    width: 100%;
+  width: 100%;
+}
+
+.home .img-box {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin: 0 16px;
+  box-shadow: 0 8px 32px var(--color-glass-shadow);
+}
+
+.home .ant-carousel {
+  margin-bottom: 24px;
 }

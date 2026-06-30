@@ -1,16 +1,13 @@
 import './CommentList.css'
-import {Avatar, Space, Row, Col, Card, Divider} from 'antd';
+import {Avatar, Space, Row, Col, Empty, Divider} from 'antd';
 
 function CommentList({data}) {
-
-    console.log(data);
-
 
     return (
         <div className="comment-list">
             <h2>评论</h2>
             <ul>
-                {data && data.map((item, key) =>
+                {data?.length > 0 && data.map((item, key) =>
                     <div key={key}>
                         <li>
                             <Row>
@@ -31,6 +28,9 @@ function CommentList({data}) {
                         </li>
                         {key < data.length -1 && <Divider/>}
                     </div>
+                )}
+                {data?.length === 0 && (
+                    <Empty description='暂无评论' />
                 )}
             </ul>
         </div>

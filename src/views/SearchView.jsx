@@ -48,7 +48,7 @@ function Search() {
             <Spin spinning={state.loading} size={'large'}>
             {
                 state.data.orders && state.data.orders.map(item =>
-                    <Tag key={item} color="#2db7f5">{item}</Tag>
+                    <Tag key={item} color="purple">{item}</Tag>
                 )
             }
             {state.data.artist && <ItemList title={'歌手'} data={state.data.artist} type={'singerlist'} />}
