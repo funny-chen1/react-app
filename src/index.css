@@ -151,7 +151,6 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(12px);
   background: var(--color-surface-elevated);
   box-shadow: 0 4px 24px var(--color-glass-shadow);
   border: 1px solid var(--color-glass-border);
@@ -169,6 +168,10 @@ P {
 
 .mt20 {
   margin-top: 20px;
+}
+
+.pt20 {
+  padding-top: 20px;
 }
 
 .home {

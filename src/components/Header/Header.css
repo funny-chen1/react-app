@@ -55,7 +55,7 @@
 .header .ant-input-search .ant-input {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  color: #333;
 }
 
 .header .ant-input-search .ant-input::placeholder {

@@ -14,6 +14,7 @@ import { Spin, Card, Empty, Space, Button } from "antd";
 import { playMusic } from "../store/actions";
 import { useDispatch } from "react-redux";
 import "./PlayDetailView.css";
+import { render } from "react-dom";
 
 function PlayDetail() {
   const { id } = useParams();
@@ -45,6 +46,12 @@ function PlayDetail() {
       ellipsis: true,
     },
     {
+      title: "歌手",
+      key: "artist",
+      ellipsis: true,
+      render: (_, record) => record.ar?.map((a) => a.name).join(" / ")
+    },
+    {
       title: "",
       key: "action",
       width: 120,
@@ -66,14 +73,16 @@ function PlayDetail() {
   const init = async () => {
     setState((pre) => ({ ...pre, isLoading: true }));
     try {
-      const [infoResult, detailResult, commentResult] = await Promise.allSettled([
-        playlistInfo({ id }),
-        playlistDetail({ id }),
-        getComment({ id }),
-      ]);
+      const [infoResult, detailResult, commentResult] =
+        await Promise.allSettled([
+          playlistInfo({ id }),
+          playlistDetail({ id }),
+          getComment({ id }),
+        ]);
 
       const info = infoResult.status === "fulfilled" ? infoResult.value : null;
-      const res = detailResult.status === "fulfilled" ? detailResult.value : null;
+      const res =
+        detailResult.status === "fulfilled" ? detailResult.value : null;
       const hotComments =
         commentResult.status === "fulfilled"
           ? commentResult.value?.hotComments
@@ -130,9 +139,7 @@ function PlayDetail() {
             <header
               className="play-detail__hero"
               style={
-                coverUrl
-                  ? { "--hero-cover": `url(${coverUrl})` }
-                  : undefined
+                coverUrl ? { "--hero-cover": `url(${coverUrl})` } : undefined
               }
             >
               <img
@@ -165,10 +172,7 @@ function PlayDetail() {
                 <div className="play-detail__actions">
                   <Spin spinning={loadingT}>
                     {info.subscribed ? (
-                      <Button
-                        onClick={() => collect("2")}
-                        size="large"
-                      >
+                      <Button onClick={() => collect("2")} size="large">
                         取消收藏
                       </Button>
                     ) : (
@@ -192,7 +196,10 @@ function PlayDetail() {
               {songs.length > 0 ? (
                 <AppTable columns={columns} data={songs} />
               ) : (
-                <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="暂无歌曲" />
+                <Empty
+                  image={Empty.PRESENTED_IMAGE_SIMPLE}
+                  description="暂无歌曲"
+                />
               )}
             </Card>
           </section>

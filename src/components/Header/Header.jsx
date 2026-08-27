@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import routes from "../../router/index";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { AudioOutlined } from "@ant-design/icons";
 import { Button, Modal, Input, Avatar, Dropdown } from "antd";
 import Login from "../../views/LoginView";
 import {setLocal} from "../../utils/public";
@@ -73,7 +72,7 @@ function Header() {
     setIsModalOpen(false);
   };
 
-  const onSearch = async (value, _e, info) => {
+  const onSearch = async (value) => {
     // const res = await search({keywords: value})
     goPath("/search", { keywords: value });
   };
@@ -98,7 +97,7 @@ function Header() {
         placeholder="请输入..."
         allowClear
         onSearch={onSearch}
-        style={{ width: 200 }}
+        style={{ width: 200, color: '#000' }}
       />
       <div className="right-box">
         {userInfo !== '' && (
