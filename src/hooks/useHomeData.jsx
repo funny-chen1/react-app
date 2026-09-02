@@ -14,12 +14,14 @@ const useHomeData = () => {
     useEffect(() => {
         const init = async () => {
             setHomeData(pre => ({...pre, loading: true}));
-            const res = await Promise.all([getBanner(), getPlaylist(), getArtists(), getMv()]);
+            const [bannerRes, playlistRes, artistsRes, mvRes] = await Promise.allSettled([
+                getBanner(), getPlaylist(), getArtists(), getMv()
+            ]);
             setHomeData({
-                banner: res[0].banners,
-                playlist: res[1].result,
-                artistslist: res[2].artists,
-                mvlist: res[3].data,
+                banner: bannerRes.status === 'fulfilled' ? bannerRes.value.banners : [],
+                playlist: playlistRes.status === 'fulfilled' ? playlistRes.value.result : [],
+                artistslist: artistsRes.status === 'fulfilled' ? artistsRes.value.artists : [],
+                mvlist: mvRes.status === 'fulfilled' ? mvRes.value.data : [],
                 loading: false
             });
         }
